@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    .note {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Will you be my Valentine ❤️<br/>and take this weekend off<br/>and plan for a date?</h1>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+
+    <div class="note">No is a little shy, you can try 😄</div>
+  </div>
+
+  <script>
+    let yesScale = 1;
+
+    function moveNo() {
+      const noBtn = document.getElementById("noBtn");
+      const card = document.querySelector(".card");
+
+      const maxX = card.offsetWidth - noBtn.offsetWidth;
+      const maxY = card.offsetHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      yesScale += 0.1;
+      document.getElementById("yesBtn").style.transform =
+        `scale(${yesScale})`;
+    }
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          font-family:Segoe UI;
+          background:#ffdde1;
+          text-align:center;">
+          <h1>Yayyy! 💖🥰<br/>Love you ammachi! surprise plan panniru!</h1>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
